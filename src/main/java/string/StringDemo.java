@@ -5,7 +5,7 @@ package string;
  * 创建的字符串对象，当再次使用相同字面量创建字符串时会直接重用常量池中的对象而不会再次
  * 创建新对象减少内存开销
  */
-public class StringMemo {
+public class StringDemo {
     public static void main(String[] args) {
         String s1 = "123abc";
         System.out.println("s1:"+s1);
