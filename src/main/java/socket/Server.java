@@ -1,13 +1,10 @@
 package socket;
 
-import javax.naming.InsufficientResourcesException;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.logging.Handler;
 
 /**
  * 聊天室服务端
@@ -96,6 +93,7 @@ public class Server {
                         ),true
                 );
                 synchronized (serverSocket) {
+//                    synchronized (Server.class) {//可以
                     allOut.add(pw);
 //                    allOut = Arrays.copyOf(allOut, allOut.length + 1);
                     //将当前对应客户端的输出流存入到共享数组allOut中，以便广播消息
@@ -129,8 +127,10 @@ public class Server {
 //                    }
 //                }
                 allOut.remove(pw);
+//                System.out.println(host+"下线了！当前在线人数："+allOut.length);
                 System.out.println(host+"下线了！当前在线人数："+allOut.size());
                 try {
+                    //最终不在通讯时要关闭socket.(相当于挂电话)
                     socket.close();
                 } catch (IOException e) {
                     e.printStackTrace();

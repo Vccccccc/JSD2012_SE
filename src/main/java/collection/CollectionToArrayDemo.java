@@ -3,7 +3,6 @@ package collection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 /**
  * 集合转换为数组
@@ -18,7 +17,8 @@ public class CollectionToArrayDemo {
         c.add("four");
         c.add("five");
         System.out.println(c);
-        String[] array = c.toArray(new String[c.size()]);
+//        Object[] array = c.toArray();
+        String[] array = c.toArray(new String[c.size()]);//数组长度通常大于等于c.size()
         System.out.println(array.length);
         System.out.println(Arrays.toString(array));
 

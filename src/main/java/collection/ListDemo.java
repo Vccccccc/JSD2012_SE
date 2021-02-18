@@ -1,7 +1,6 @@
 package collection;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,27 +36,30 @@ public class ListDemo {
         /*
             E set(int index,E e)
             将给定元素设置到指定位置，返回值为该位置原有元素
-            相当于是替换现有元素
+            相当于是替换现有元素操作
          */
         String old = list.set(1,"2");
-        System.out.println(old);
+        System.out.println(old);//被替换的元素two
         System.out.println(list);
         /*
             在不创建新集合的前提下，将元素反转
             就利用get，set方法实现
          */
         for(int i=0;i<list.size()/2;i++){
+            //获取正数位置上的元素
             String s = list.get(i);
+            //将正数位置的元素替换倒数位置的元素
             s = list.set(list.size()-1-i, s);
+            //将原倒数位置的元素设置到正数位置上完成交换
             list.set(i, s);
 //            String s = list.set(i,list.set(list.size()-1-i,list.get(i)));
 
         }
+        System.out.println(list);
         /*
             java.util.Collections是集合的工具类，里面提供了很多操作集合的方法
             reverse(List list)用于反转集合元素
          */
-        System.out.println(list);
         Collections.reverse(list);
         System.out.println(list);
 
