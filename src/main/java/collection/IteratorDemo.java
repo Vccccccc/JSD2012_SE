@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * 遍历集合
+ * 集合的遍历
  * Iterator iterator()
  * Collection提供了上述方法，可以获取一个用于遍历当前集合元素的迭代器。
  * 通过迭代器的操作来达到遍历集合元素的目的

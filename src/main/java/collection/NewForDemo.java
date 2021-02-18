@@ -15,7 +15,7 @@ public class NewForDemo {
             System.out.println(str);
         }
         //新循环在编译器编译后改为普通for循环
-        for (String str:arr){
+        for (String str : arr){//冒号前是接收类型，冒号后是要遍历的数组
             System.out.println(str);
         }
         Collection<String> c = new ArrayList<>();
@@ -28,7 +28,7 @@ public class NewForDemo {
             新循环遍历集合会被编译器改回成迭代器。因此注意，不要在遍历过程中通过集合
             的方法增删元素
          */
-        for (String str:c){
+        for (String str : c){//冒号前是接收类型，冒号后是要遍历的集合
             System.out.println(str);
         }
 
