@@ -29,14 +29,15 @@ public class Day04_03 {
         String un = s.nextLine();
         System.out.println("请输入密码：");
         String pw = s.nextLine();
-        RandomAccessFile raf = new RandomAccessFile("user.dat", "rw");
+        RandomAccessFile raf = new RandomAccessFile("user.dat", "r");
         for(int i=0;i<raf.length()/100;i++){
+            raf.seek(i*100);
             byte[] data = new byte[32];
             raf.read(data);
             String username = new String(data,"UTF-8").trim();
-            raf.read(data);
-            String password = new String(data,"UTF-8").trim();
             if(username.equals(un)){
+                raf.read(data);
+                String password = new String(data,"UTF-8").trim();
                 if(password.equals(pw)){
                     System.out.println("登陆成功");
                 }
@@ -44,7 +45,6 @@ public class Day04_03 {
             }else if(i==raf.length()/100-1){
                 System.out.println("用户名不存在");
             }
-            raf.seek(raf.getFilePointer()+36);
         }
         raf.close();
     }

@@ -3,6 +3,7 @@ package homework_04;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -31,8 +32,8 @@ public class Day04_02 {
         String un = s.nextLine();
         //String nn = s.nextLine();
         RandomAccessFile raf = new RandomAccessFile("user.dat", "rw");
-        long l;
         for (int i=0;i<raf.length()/100;i++){
+            raf.seek(i*100);
             byte[] data = new byte[32];
             raf.read(data);
             String username = new String(data,"UTF-8").trim();
@@ -41,8 +42,9 @@ public class Day04_02 {
                 System.out.println("匹配");
                 System.out.println("请修改昵称：");
                 String nn = s.nextLine();
+                raf.seek(i*100+64);
                 data = nn.getBytes("UTF-8");
-                raf.seek(64);
+                data = Arrays.copyOf(data, 32);
                 raf.write(data);
                 String nickname = new String(data, "UTF-8").trim();
                 System.out.println(nickname);
@@ -50,7 +52,6 @@ public class Day04_02 {
             }else if(i==raf.length()/100-1){
                 System.out.println("查无此人");
             }
-            raf.seek(raf.getFilePointer()+68);
         }
         raf.close();
     }
